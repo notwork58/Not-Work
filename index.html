@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Unblocked Arcade</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ===== Top Bar ===== -->
+<div class="topbar">
+    <div class="title">Unblocked Arcade</div>
+    <input 
+        type="text" 
+        id="searchBar" 
+        placeholder="Search games..."
+        onkeyup="searchGames()"
+    >
+    <button id="randomBtn" onclick="playRandomGame()">Random</button>
+</div>
+
+<!-- ===== Games Grid ===== -->
+<div class="games">
+
+<a href="games/slope.html" class="game">
+<p>Slope</p>
+</a>
+
+<a href="games/2048.html" class="game">
+<p>2048</p>
+</a>
+
+<a href="games/motox3m.html" class="game">
+<p>Moto X3M</p>
+</a>
+
+<a href="games/basket-random.html" class="game">
+<p>Basket Random</p>
+</a>
+
+<a href="games/run-3.html" class="game">
+<p>Run 3</p>
+</a>
+
+<a href="games/retro-bowl.html" class="game">
+<p>Retro Bowl</p>
+</a>
+
+<a href="games/baldis-basics.html" class="game">
+<p>Baldi's Basics</p>
+</a>
+
+<a href="games/bitlife.html" class="game">
+<p>Bitlife</p>
+</a>
+
+</div>
+
+<script>
+/* ===== Search Function ===== */
+function searchGames() {
+    let input = document.getElementById("searchBar").value.toLowerCase();
+    let games = document.getElementsByClassName("game");
+    for (let i = 0; i < games.length; i++) {
+        let title = games[i].innerText.toLowerCase();
+        games[i].style.display = title.includes(input) ? "flex" : "none";
+    }
+}
+
+/* ===== Random Game Button ===== */
+function playRandomGame() {
+    let games = document.getElementsByClassName("game");
+    let visibleGames = [];
+    for (let i = 0; i < games.length; i++) {
+        if (games[i].style.display !== "none") {
+            visibleGames.push(games[i]);
+        }
+    }
+    if (visibleGames.length > 0) {
+        let randomGame = visibleGames[Math.floor(Math.random() * visibleGames.length)];
+        window.location.href = randomGame.href;
+    }
+}
+</script>
+
+</body>
+</html>
